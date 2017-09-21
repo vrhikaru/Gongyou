@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1324145C1F70FA22006D1958 /* 4_cht.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1324145B1F70FA22006D1958 /* 4_cht.txt */; };
 		133EAB7F1F38628400443E63 /* 1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 133EAB7A1F38628400443E63 /* 1.txt */; };
 		133EAB801F38628400443E63 /* 2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 133EAB7B1F38628400443E63 /* 2.txt */; };
 		133EAB811F38628400443E63 /* 3-1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 133EAB7C1F38628400443E63 /* 3-1.txt */; };
@@ -65,6 +66,11 @@
 		135D71D61F31C1E500906EB2 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 135D71D11F31C1E500906EB2 /* Default@2x.png */; };
 		135D71DB1F31DB2500906EB2 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 135D71DA1F31DB2500906EB2 /* AVFoundation.framework */; };
 		135D71DD1F31DB2B00906EB2 /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 135D71DC1F31DB2B00906EB2 /* AVKit.framework */; };
+		13C1653F1F7379A80003311D /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13C1653E1F7379A80003311D /* GameKit.framework */; };
+		13C165411F738AC80003311D /* DefaultPreferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = 13C165401F738AC80003311D /* DefaultPreferences.plist */; };
+		13C165441F738DF20003311D /* MainIntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13C165431F738DF20003311D /* MainIntroViewController.m */; };
+		13C165471F738EE10003311D /* TimeTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 13C165461F738EE10003311D /* TimeTools.m */; };
+		13FE58261F712B3800CDEA59 /* UserInfoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 13FE58251F712B3800CDEA59 /* UserInfoManager.m */; };
 		A59F5D0E2C5817FB1E70B9B5 /* libPods-Gongyou.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C8CCFCAEE8E7A027E2BC8013 /* libPods-Gongyou.a */; };
 /* End PBXBuildFile section */
 
@@ -80,6 +86,7 @@
 
 /* Begin PBXFileReference section */
 		0A4FA5DB66FD84CB622166D9 /* Pods-Gongyou.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gongyou.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Gongyou/Pods-Gongyou.debug.xcconfig"; sourceTree = "<group>"; };
+		1324145B1F70FA22006D1958 /* 4_cht.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = 4_cht.txt; path = display_data/4_cht.txt; sourceTree = "<group>"; };
 		133EAB7A1F38628400443E63 /* 1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = 1.txt; path = display_data/1.txt; sourceTree = "<group>"; };
 		133EAB7B1F38628400443E63 /* 2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = 2.txt; path = display_data/2.txt; sourceTree = "<group>"; };
 		133EAB7C1F38628400443E63 /* 3-1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "3-1.txt"; path = "display_data/3-1.txt"; sourceTree = "<group>"; };
@@ -149,6 +156,14 @@
 		135D71D11F31C1E500906EB2 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		135D71DA1F31DB2500906EB2 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		135D71DC1F31DB2B00906EB2 /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
+		13C1653E1F7379A80003311D /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		13C165401F738AC80003311D /* DefaultPreferences.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = DefaultPreferences.plist; path = user_data/DefaultPreferences.plist; sourceTree = "<group>"; };
+		13C165421F738DF20003311D /* MainIntroViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainIntroViewController.h; sourceTree = "<group>"; };
+		13C165431F738DF20003311D /* MainIntroViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainIntroViewController.m; sourceTree = "<group>"; };
+		13C165451F738EE10003311D /* TimeTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TimeTools.h; path = Tools/TimeTools.h; sourceTree = "<group>"; };
+		13C165461F738EE10003311D /* TimeTools.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = TimeTools.m; path = Tools/TimeTools.m; sourceTree = "<group>"; };
+		13FE58241F712B3800CDEA59 /* UserInfoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoManager.h; sourceTree = "<group>"; };
+		13FE58251F712B3800CDEA59 /* UserInfoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoManager.m; sourceTree = "<group>"; };
 		9268A70B7E37B0E8CF84A079 /* Pods-Gongyou.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gongyou.release.xcconfig"; path = "Pods/Target Support Files/Pods-Gongyou/Pods-Gongyou.release.xcconfig"; sourceTree = "<group>"; };
 		C8CCFCAEE8E7A027E2BC8013 /* libPods-Gongyou.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Gongyou.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -161,6 +176,7 @@
 				135D71DD1F31DB2B00906EB2 /* AVKit.framework in Frameworks */,
 				135D71DB1F31DB2500906EB2 /* AVFoundation.framework in Frameworks */,
 				A59F5D0E2C5817FB1E70B9B5 /* libPods-Gongyou.a in Frameworks */,
+				13C1653F1F7379A80003311D /* GameKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -182,6 +198,12 @@
 				135D717E1F31AAE700906EB2 /* GongyouViewController.m */,
 				133EAB891F39AF4F00443E63 /* LearningViewController.h */,
 				133EAB8A1F39AF4F00443E63 /* LearningViewController.m */,
+				13FE58241F712B3800CDEA59 /* UserInfoManager.h */,
+				13FE58251F712B3800CDEA59 /* UserInfoManager.m */,
+				13C165421F738DF20003311D /* MainIntroViewController.h */,
+				13C165431F738DF20003311D /* MainIntroViewController.m */,
+				13C165451F738EE10003311D /* TimeTools.h */,
+				13C165461F738EE10003311D /* TimeTools.m */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -194,6 +216,7 @@
 				133EAB7C1F38628400443E63 /* 3-1.txt */,
 				133EAB7D1F38628400443E63 /* 3-2.txt */,
 				133EAB7E1F38628400443E63 /* 4.txt */,
+				1324145B1F70FA22006D1958 /* 4_cht.txt */,
 			);
 			name = kyo;
 			sourceTree = "<group>";
@@ -275,6 +298,7 @@
 				135D71851F31B80000906EB2 /* ring.mp3 */,
 				135D71831F31B7F400906EB2 /* kegi040916a.gif */,
 				135D71801F31B66F00906EB2 /* SGI_Gohonzon.jpg */,
+				13C165401F738AC80003311D /* DefaultPreferences.plist */,
 			);
 			name = Resource;
 			sourceTree = "<group>";
@@ -364,6 +388,7 @@
 		135D71D91F31DB2500906EB2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				13C1653E1F7379A80003311D /* GameKit.framework */,
 				135D71DC1F31DB2B00906EB2 /* AVKit.framework */,
 				135D71DA1F31DB2500906EB2 /* AVFoundation.framework */,
 				C8CCFCAEE8E7A027E2BC8013 /* libPods-Gongyou.a */,
@@ -427,7 +452,7 @@
 		135D71411F3182CA00906EB2 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = Rex;
 				TargetAttributes = {
 					135D71481F3182CA00906EB2 = {
@@ -435,6 +460,9 @@
 						DevelopmentTeam = 4FYSWHP746;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
+							com.apple.GameCenter = {
+								enabled = 1;
+							};
 							com.apple.iCloud = {
 								enabled = 1;
 							};
@@ -480,6 +508,7 @@
 				135D71CB1F31C1DB00906EB2 /* iphone6plus_1.png in Resources */,
 				135D715C1F3182CA00906EB2 /* Assets.xcassets in Resources */,
 				135D71BF1F31BD1A00906EB2 /* iTunesArtwork@1x.png in Resources */,
+				1324145C1F70FA22006D1958 /* 4_cht.txt in Resources */,
 				135D71B61F31BD1A00906EB2 /* Icon-App-60x60@3x.png in Resources */,
 				133EAB831F38628400443E63 /* 4.txt in Resources */,
 				135D71861F31B80000906EB2 /* ring.mp3 in Resources */,
@@ -492,6 +521,7 @@
 				135D71BB1F31BD1A00906EB2 /* Icon-App-76x76@3x.png in Resources */,
 				135D71A91F31BD1A00906EB2 /* Icon-App-20x20@1x.png in Resources */,
 				135D71571F3182CA00906EB2 /* Main.storyboard in Resources */,
+				13C165411F738AC80003311D /* DefaultPreferences.plist in Resources */,
 				135D71D41F31C1E500906EB2 /* Default-736@2x.png in Resources */,
 				135D71C11F31BD1A00906EB2 /* iTunesArtwork@3x.png in Resources */,
 				135D71CA1F31C1DB00906EB2 /* iphone6_1.png in Resources */,
@@ -591,12 +621,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13C165471F738EE10003311D /* TimeTools.m in Sources */,
 				135D715A1F3182CA00906EB2 /* Gongyou.xcdatamodeld in Sources */,
 				135D71511F3182CA00906EB2 /* AppDelegate.m in Sources */,
+				13FE58261F712B3800CDEA59 /* UserInfoManager.m in Sources */,
 				135D717F1F31AAE700906EB2 /* GongyouViewController.m in Sources */,
 				135D714E1F3182CA00906EB2 /* main.m in Sources */,
 				133EAB8B1F39AF4F00443E63 /* LearningViewController.m in Sources */,
 				1348C8531F3D92E7003A1BD4 /* Sa_TableViewCell.m in Sources */,
+				13C165441F738DF20003311D /* MainIntroViewController.m in Sources */,
 				1348C8581F3D93F3003A1BD4 /* Sa_Guid_TableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -649,7 +682,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -657,7 +692,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -698,7 +737,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -706,7 +747,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;

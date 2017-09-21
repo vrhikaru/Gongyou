@@ -1,27 +1,26 @@
 //
-//  LearningViewController.m
+//  MainIntroViewController.m
 //  Gongyou
 //
-//  Created by Rex on 2017/8/8.
+//  Created by Rex on 2017/9/21.
 //  Copyright © 2017年 Rex. All rights reserved.
 //
 
-#import "LearningViewController.h"
+#import "MainIntroViewController.h"
+#import "TimeTools.h"
+#import "UserInfoManager.h"
 
-@interface LearningViewController ()
+@interface MainIntroViewController ()
 
 @end
 
-@implementation LearningViewController
+@implementation MainIntroViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    //https://youtu.be/SV7ehVgHb3w
-  [self.playerView loadWithVideoId:@"SV7ehVgHb3w"];
-  
-  UIBarButtonItem *l_backButton = [[UIBarButtonItem alloc] initWithTitle:@"<< 回首頁" style:UIBarButtonItemStylePlain target:self action:@selector(backToRootView:)];
-  self.navigationItem.leftBarButtonItem = l_backButton;
+  _gongyou_total_time.text = [TimeTools GetTimeString:[UserInfoManager get_total_gongyou_time]];
+  _gongyo_last_time_count.text = [TimeTools GetTimeString:[UserInfoManager get_last_gongyou_time_count]];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -38,7 +37,5 @@
     // Pass the selected object to the new view controller.
 }
 */
-- (void) backToRootView:(id)sender {
-  [self.navigationController popToRootViewControllerAnimated:YES];
-}
+
 @end

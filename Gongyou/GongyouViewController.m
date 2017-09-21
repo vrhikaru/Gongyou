@@ -7,11 +7,22 @@
 //
 
 #import "GongyouViewController.h"
-
-
+#import "UserInfoManager.h"
+#import "TimeTools.h"
 
 @interface GongyouViewController ()
-
+{
+  NSString* default_gongyou_time_label_string;
+  NSString* default_back_hoben_btn_string;
+  NSString* default_back_muryou_btn_string;
+  NSString* default_back_start_btn_string;
+  NSString* default_back_main_btn_string;
+  NSString* default_hoben_btn_title_string;
+  NSString* default_start_btn_title_string;
+  NSString* default_muryou_btn_title_string;
+  NSString* default_ginen_btn_title_string;
+  NSString* default_endGongyou_btn_title_string;
+}
 @end
 
 @implementation GongyouViewController
@@ -19,6 +30,22 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+  default_gongyou_time_label_string = @"勤行時間";
+  
+ default_back_hoben_btn_string = @"<< 回方便品";
+ default_back_muryou_btn_string = @"<< 回無量壽品";
+ default_back_start_btn_string = @"<< 回開始";
+ default_back_main_btn_string = @"<< 回首頁";
+  
+ default_hoben_btn_title_string = @"方便品第二";
+ default_start_btn_title_string = @"開始";
+ default_muryou_btn_title_string = @"無量壽品第十六";
+ default_ginen_btn_title_string = @"祈念文";
+  
+  default_endGongyou_btn_title_string = @"勤行結束";
+  
+  _currentTime = 0;
+  _totalTime = [UserInfoManager get_total_gongyou_time];
     // Do any additional setup after loading the view.
   [self InitView];
 }
@@ -62,19 +89,17 @@
   [_giga_switch addTarget:self action:@selector(GigaState:) forControlEvents:UIControlEventValueChanged];
   
   [_font_size_stepper addTarget:self action:@selector(ChangeFontSize) forControlEvents:UIControlEventValueChanged];
-  
-  //TODO:Get total time from iCloud data
-  _totalTime = 0;
-  
-   [_gongyou_time_label setText:@"總勤行時間："];
-  
+
+  _totalTime = [UserInfoManager get_total_gongyou_time];
+  _gongyou_time_label.text = default_gongyou_time_label_string;
+  [_timerlabel setText:[TimeTools GetTimeString:_currentTime]];
   NSUbiquitousKeyValueStore* store = [NSUbiquitousKeyValueStore defaultStore];
   [[NSNotificationCenter defaultCenter] addObserver:self
                                            selector:@selector(updateKVStoreItems:)
                                                name:NSUbiquitousKeyValueStoreDidChangeExternallyNotification
                                              object:store];
   
-  _l_backButton = [[UIBarButtonItem alloc] initWithTitle:@"<回主畫面" style:UIBarButtonItemStylePlain target:self action:@selector(backToRootView:)];
+  _l_backButton = [[UIBarButtonItem alloc] initWithTitle:default_back_main_btn_string style:UIBarButtonItemStylePlain target:self action:@selector(backToRootView:)];
   self.navigationItem.leftBarButtonItem = _l_backButton;
   
   [store synchronize];
@@ -113,13 +138,12 @@
       NSError* error = nil;
       NSString* file_content = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&error];
       [_content_text_view setText:file_content];
-      [_GoToNextBtn setTitle:@"開始" forState:UIControlStateNormal];
+      [_GoToNextBtn setTitle:default_start_btn_title_string forState:UIControlStateNormal];
       [self StopTimer];
       _totalTime+= _currentTime;
       _currentTime = 0;
-      [_timerlabel setText:[self GetTimeString:_totalTime]];
-      [_gongyou_time_label setText:@"總勤行時間："];
-      [_l_backButton setTitle:@"<回主畫面"];
+      [_timerlabel setText:[TimeTools GetTimeString:_currentTime]];
+      [_l_backButton setTitle:default_back_main_btn_string];
     }
       break;
     case muryou:
@@ -129,9 +153,9 @@
       NSError* error = nil;
       NSString* file_content = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&error];
       [_content_text_view setText:file_content];
-      [_GoToNextBtn setTitle:@"妙法蓮華經如來壽量品第十六" forState:UIControlStateNormal];
-      [_gongyou_time_label setText:@"勤行時間："];
-      [_l_backButton setTitle:@"<開始"];
+      [_GoToNextBtn setTitle:default_muryou_btn_title_string forState:UIControlStateNormal];
+      //[_gongyou_time_label setText:@"勤行時間："];
+      [_l_backButton setTitle:default_back_start_btn_string];
     }
       break;
     case finish:
@@ -143,8 +167,8 @@
       NSString* path2 = [[NSBundle mainBundle] pathForResource:@"3-2" ofType:@"txt"];
       [file_content appendString:[NSString stringWithContentsOfFile:path2 encoding:NSUTF8StringEncoding error:&error]];
       [_content_text_view setText:file_content];
-      [_GoToNextBtn setTitle:@"祈念文" forState:UIControlStateNormal];
-      [_l_backButton setTitle:@"<方便品"];
+      [_GoToNextBtn setTitle:default_ginen_btn_title_string forState:UIControlStateNormal];
+      [_l_backButton setTitle:default_back_hoben_btn_string];
     }
       break;
       
@@ -182,9 +206,10 @@
       NSString* file_content = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&error];
       [_content_text_view setText:file_content];
       self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(updateTime:) userInfo:nil repeats:YES];
-      [_GoToNextBtn setTitle:@"妙法蓮華經如來壽量品第十六" forState:UIControlStateNormal];
-       [_gongyou_time_label setText:@"勤行時間："];
-      [_l_backButton setTitle:@"<回開始"];
+      [[NSRunLoop mainRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
+      [_GoToNextBtn setTitle:default_muryou_btn_title_string forState:UIControlStateNormal];
+      // [_gongyou_time_label setText:@"勤行時間："];
+      [_l_backButton setTitle:default_back_start_btn_string];
     }
       break;
     case hobanpo:
@@ -196,8 +221,8 @@
       NSString* path2 = [[NSBundle mainBundle] pathForResource:@"3-2" ofType:@"txt"];
       [file_content appendString:[NSString stringWithContentsOfFile:path2 encoding:NSUTF8StringEncoding error:&error]];
       [_content_text_view setText:file_content];
-      [_GoToNextBtn setTitle:@"祈念文" forState:UIControlStateNormal];
-      [_l_backButton setTitle:@"<方便品"];
+      [_GoToNextBtn setTitle:default_ginen_btn_title_string forState:UIControlStateNormal];
+      [_l_backButton setTitle:default_back_hoben_btn_string];
     }
       break;
     case muryou:
@@ -207,8 +232,8 @@
       NSError* error = nil;
       NSString* file_content = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&error];
       [_content_text_view setText:file_content];
-      [_GoToNextBtn setTitle:@"勤行結束" forState:UIControlStateNormal];
-      [_l_backButton setTitle:@"<無量壽品"];
+      [_GoToNextBtn setTitle:default_endGongyou_btn_title_string forState:UIControlStateNormal];
+      [_l_backButton setTitle:default_back_muryou_btn_string];
     }
       break;
     case finish:
@@ -218,21 +243,21 @@
       NSError* error = nil;
       NSString* file_content = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&error];
       [_content_text_view setText:file_content];
-      [_GoToNextBtn setTitle:@"開始" forState:UIControlStateNormal];
+      [_GoToNextBtn setTitle:default_start_btn_title_string forState:UIControlStateNormal];
       [self StopTimer];
-      _totalTime+= _currentTime;
+      [UserInfoManager save_gongyou_time:self.currentTime];
       _currentTime = 0;
-      [_timerlabel setText:[self GetTimeString:_totalTime]];
-       [_gongyou_time_label setText:@"總勤行時間："];
-      [_l_backButton setTitle:@"<回主畫面"];
+      _totalTime = [UserInfoManager get_total_gongyou_time];
+      [_timerlabel setText:[TimeTools GetTimeString:0]];
+       //[_gongyou_time_label setText:@"總勤行時間："];
+      [_l_backButton setTitle:default_back_main_btn_string];
     }
       break;
       
     default:
       break;
   }
-  //[_content_text_view scrollRectToVisible:CGRectMake(0,0,1,1) animated:YES];
-  //[_content_text_view setContentOffset:CGPointZero animated:YES];
+  
   [_content_text_view scrollRangeToVisible:NSMakeRange(0, 0)];
   
   if(_current_step == muryou){
@@ -257,31 +282,11 @@
 -(void)updateTime:(NSTimer *)timer
 {
   self.currentTime++;
-  _timerlabel.text = [self GetTimeString:self.currentTime];
+  _timerlabel.text = [TimeTools GetTimeString:self.currentTime];
   
 }
 
-- (NSString*)GetTimeString:(NSTimeInterval) time{
-  
-  NSLog(@"time:%f",time);
-  NSInteger tempHour = time / 3600;
-  NSInteger tempMinute = time / 60 - (tempHour * 60);
-  NSInteger tempSecond = time - (tempHour * 3600 + tempMinute * 60);
-  
-  NSString *hour = [[NSNumber numberWithInteger:tempHour] stringValue];
-  NSString *minute = [[NSNumber numberWithInteger:tempMinute] stringValue];
-  NSString *second = [[NSNumber numberWithInteger:tempSecond] stringValue];
-  if (tempHour < 10) {
-    hour = [@"0" stringByAppendingString:hour];
-  }
-  if (tempMinute < 10) {
-    minute = [@"0" stringByAppendingString:minute];
-  }
-  if (tempSecond < 10) {
-    second = [@"0" stringByAppendingString:second];
-  }
-  return [NSString stringWithFormat:@"%@:%@:%@", hour, minute, second];
-}
+
 
 - (void)StopTimer{
   if(_timer != nil)
@@ -293,7 +298,6 @@
 
 - (void)GigaState:(id)sender
 {
-  
   
   BOOL state = [sender isOn];
   if(state){
@@ -309,8 +313,7 @@
     [file_content appendString:[NSString stringWithContentsOfFile:path2 encoding:NSUTF8StringEncoding error:&error]];
     [_content_text_view setText:file_content];
   }
-  // [_content_text_view scrollRectToVisible:CGRectMake(0,0,1,1) animated:YES];
-  //[_content_text_view setContentOffset:CGPointZero animated:YES];
+ 
    [_content_text_view scrollRangeToVisible:NSMakeRange(0, 0)];
   NSString *rez = state == YES ? @"YES" : @"NO";
   NSLog(@"%@",rez);
@@ -320,6 +323,7 @@
   UIFont* currentFont = _content_text_view.font;
   NSString* fontName = currentFont.fontName;
   [_content_text_view setFont:[UIFont fontWithName:fontName size:_font_size_stepper.value]];
+  [_content_text_view setNeedsDisplay];
 }
 
 - (void)updateKVStoreItems:(NSNotification*)notification {
@@ -352,12 +356,9 @@
 }
 
 
-
-
-
 - (void) backToRootView:(id)sender {
-  
   [self GoBackScene];
 }
+
 
 @end
