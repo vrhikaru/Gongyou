@@ -55,6 +55,9 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+  [self ReScaleView];
+}
 
 - (void)viewWillDisappear:(BOOL)animated{
   [self StopTimer];
@@ -103,6 +106,59 @@
   self.navigationItem.leftBarButtonItem = _l_backButton;
   
   [store synchronize];
+}
+
+- (void)ReScaleView{
+  CGRect mainFrame = self.view.frame;
+  CGSize statusBarSize = [[UIApplication sharedApplication] statusBarFrame].size;
+  mainFrame = CGRectMake(0, statusBarSize.height, mainFrame.size.width, mainFrame.size.height - statusBarSize.height);
+  int safeZonePixel = 4;
+  //re-scale view size
+  [_GohonzonView setFrame:CGRectMake(0, mainFrame.origin.y, mainFrame.size.width, mainFrame.size.height / 2)];
+  [_GohonzonImage setFrame:_GohonzonView.frame];
+  
+  float baseZoneHeight = (mainFrame.size.height / 2)/4;
+  
+  [_OkyouView setFrame:CGRectMake(0, _GohonzonView.frame.origin.y +  _GohonzonView.frame.size.height, mainFrame.size.width, baseZoneHeight * 2)];
+  //[_OkyouView setBackgroundColor:[UIColor redColor]];
+  [_content_text_view sizeThatFits:_OkyouView.frame.size];
+ 
+  [_TimeZoneview setFrame:CGRectMake(0, _OkyouView.frame.origin.y + _OkyouView.frame.size.height,
+                                     mainFrame.size.width, baseZoneHeight)];
+  //[_TimeZoneview setBackgroundColor:[UIColor yellowColor]];
+  
+  [_giga_switch setFrame:CGRectMake(_TimeZoneview.frame.size.width - _giga_switch.frame.size.width - safeZonePixel,
+                                    2, _giga_switch.frame.size.width, _giga_switch.frame.size.height)];
+  [_giga_switch_label setFrame:CGRectMake(_giga_switch.frame.origin.x - 60, 7, 60, 21)];
+ 
+  
+  [_gongyou_time_label setFrame:CGRectMake(_TimeZoneview.frame.origin.x + safeZonePixel,  2,
+                                           96, 23)];
+  [_timerlabel setFrame:CGRectMake(_TimeZoneview.frame.origin.x + safeZonePixel,
+                                   _gongyou_time_label.frame.origin.y + _gongyou_time_label.frame.size.height,
+                                   160, 33)];
+  
+  [_stepBigA_label setFrame:CGRectMake(_TimeZoneview.frame.size.width - _stepBigA_label.frame.size.width - safeZonePixel,
+                                      _TimeZoneview.frame.size.height - _stepBigA_label.frame.size.height,
+                                      _stepBigA_label.frame.size.width, _stepBigA_label.frame.size.height)];
+  
+  [_font_size_stepper setFrame:CGRectMake(_stepBigA_label.frame.origin.x - _font_size_stepper.frame.size.width,
+                                          _TimeZoneview.frame.size.height - _font_size_stepper.frame.size.height - 2,
+                                          _font_size_stepper.frame.size.width, _font_size_stepper.frame.size.height)];
+  
+  [_stepSmallA_label setFrame:CGRectMake(_font_size_stepper.frame.origin.x - _stepBigA_label.frame.size.width,
+                                       _TimeZoneview.frame.size.height - _stepBigA_label.frame.size.height,
+                                       _stepBigA_label.frame.size.width, _stepBigA_label.frame.size.height)];
+  
+  [_ButtonsView setFrame:CGRectMake(0, _TimeZoneview.frame.origin.y + _TimeZoneview.frame.size.height,
+                                    mainFrame.size.width,
+                                    baseZoneHeight)];
+  float nextBtnWidth = _ButtonsView.frame.size.width / 2;
+  float nextBtnHeight = _ButtonsView.frame.size.height / 3;
+  [_GoToNextBtn setFrame:CGRectMake(_ButtonsView.frame.size.width / 5, (_ButtonsView.frame.size.height / 2) - (nextBtnHeight / 2), nextBtnWidth, nextBtnHeight)];
+  [_ringBtn setFrame:CGRectMake(_ButtonsView.frame.size.width - 60 -  safeZonePixel,
+                                _ButtonsView.frame.size.height - 60 - safeZonePixel,
+                                60, 60)];
 }
 
 - (void) Playring {

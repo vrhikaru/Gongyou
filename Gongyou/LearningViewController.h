@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <YTPlayerView.h>
 
-@interface LearningViewController : UIViewController
+@interface LearningViewController : UIViewController <YTPlayerViewDelegate>
+@property (weak, nonatomic) IBOutlet UILabel *loading_label;
 @property (nonatomic, strong) IBOutlet YTPlayerView *playerView;
 @end

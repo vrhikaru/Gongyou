@@ -16,6 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+  self.playerView.delegate = self;
     // Do any additional setup after loading the view.
     //https://youtu.be/SV7ehVgHb3w
   [self.playerView loadWithVideoId:@"SV7ehVgHb3w"];
@@ -29,6 +30,7 @@
     // Dispose of any resources that can be recreated.
 }
 
+
 /*
 #pragma mark - Navigation
 
@@ -41,4 +43,9 @@
 - (void) backToRootView:(id)sender {
   [self.navigationController popToRootViewControllerAnimated:YES];
 }
+
+- (void)playerViewDidBecomeReady:(YTPlayerView *)playerView{
+  [_loading_label setHidden:YES];
+}
+
 @end
