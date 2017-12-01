@@ -19,8 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-  _gongyou_total_time.text = [TimeTools GetTimeString:[UserInfoManager get_total_gongyou_time]];
-  _gongyo_last_time_count.text = [TimeTools GetTimeString:[UserInfoManager get_last_gongyou_time_count]];
+  
 }
 
 - (void)didReceiveMemoryWarning {
@@ -28,6 +27,10 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+  _gongyou_total_time.text = [TimeTools GetTimeString:[UserInfoManager get_total_gongyou_time]];
+  _gongyo_last_time_count.text = [TimeTools GetTimeString:[UserInfoManager get_last_gongyou_time_count]];
+}
 /*
 #pragma mark - Navigation
 
